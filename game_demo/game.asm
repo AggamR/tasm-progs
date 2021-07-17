@@ -66,44 +66,6 @@ leaveColLoop:
     ret
 endp drawRec
 
-; for debugging
-proc print
-    mov ah, 9h
-    int 21h
-    mov ah, 2 ; new line
-    mov dl, 10
-    int 21h
-    mov dl, 13
-    int 21h
-    ret
-endp print
-
-proc printAX
-    push bp
-	mov bp, sp
-	mov bp, 10  ;Constant divider 10
-	push bp      ;Will signal the end of the PUSHed remainders
-    mov di, 1
-NextAX:
-	mul di
-	div bp      ;Divide Word3
-	push dx
-	cmp ax, 0
-	jne NextAX   ;
-	pop dx      ;This is digit for sure
-	mov ah, 2h
-MoreAX:
-	add dl, '0' ;Convert from remainder [0,9] to character ["0","9"]
-	int 21h     ;DisplayCharacter
-	pop dx  ; BYPASS_POP_MATCH
-	cmp dx, bp  ;Repeat until it was the 'signal (bp=10)' that was POPed
-	jb MoreAX
-	pop bp
-	ret
-endp printAX
-
-; 
-
 proc movPlayer  ; by movx, movy
 	xor ax, ax
 	cmp [movx], 1 

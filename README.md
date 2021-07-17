@@ -8,3 +8,6 @@ It can do powers, factorials, and even square roots (no decimal points tho).
 
 ### piano
 a full graphical piano with only the basic notes. (could use some tuning). it loads a bmp picture as a starting screen, which was a real pain.
+
+### game_demo
+a demo for a game, where you control a green dot with WASD and blue walls block you so you can't move through them. 
